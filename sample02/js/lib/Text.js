@@ -30,13 +30,39 @@ export default class Text {
         return new Promise((resolve,reject)=>{
             setTimeout(() => {
                 if (flag) {
-                    // reject();
+                    reject('rejected');
+                    return;
+                }
+                func();
+                console.log(flag);
+                resolve('resolved');
+            }, s);
+        }).then((v)=>{
+            console.log(v);
+        }).catch((v)=>{
+            console.log(v);
+            console.log('error');
+        })
+    }
+
+    async timer3(func,s,flag){
+        try {
+            const v = await new Promise((resolve, reject) => {
+                setTimeout(() => {
+                    if (!flag) {
+                        reject('rejected');
+                        return;
+                    }
                     func();
                     console.log(flag);
-                }
-                resolve();
-            }, s);
-        })
+                    resolve('resolved');
+                }, s);
+            });
+            console.log(v);
+        } catch (v_1) {
+            console.log(v_1);
+            console.log('error');
+        }
     }
 
     /**
@@ -104,8 +130,10 @@ export default class Text {
                 }
 
                 // await this.timer2(
+                // await this.timer3(
                 //     ()=>{ele.classList.remove('op0');},
-                //     100,false);
+                // 100,this.movingFlag);
+                // 100,true);
                 // console.log(ele);
                 await this.timer(100);
                 console.log(ele);
