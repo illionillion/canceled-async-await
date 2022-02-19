@@ -29,7 +29,7 @@ export default class Text {
     timer2(func,s,flag){
         return new Promise((resolve,reject)=>{
             setTimeout(() => {
-                if (flag) {
+                if (!flag) {
                     reject('rejected');
                     return;
                 }
@@ -130,16 +130,17 @@ export default class Text {
                 }
 
                 // await this.timer2(
-                // await this.timer3(
-                //     ()=>{ele.classList.remove('op0');},
-                // 100,this.movingFlag);
+                await this.timer3(
+                    ()=>{ele.classList.remove('op0');},
+                100,this.movingFlag);
                 // 100,true);
                 // console.log(ele);
-                await this.timer(100);
+                // await this.timer(100);
                 console.log(ele);
-                ele.classList.remove('op0');
+                // ele.classList.remove('op0');
 
             }
+            console.log('終了');
             this.movingFlag=false;
             
         })();
