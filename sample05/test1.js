@@ -2,12 +2,20 @@
 
 const sleep = (ss) => { 
     return new Promise((resolve,reject) => {
+        // const t= setTimeout(
         setTimeout(
             () => {
+                // if ((ss/1000)%5==0) {
+                //     reject('5の倍数');
+                //     clearTimeout(t);
+                //     return;
+                // }
                 console.log(ss);
                 resolve();
             }, 
         ss);
+    }).catch((v)=>{
+        console.log(v);
     })
 }
 
